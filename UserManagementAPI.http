@@ -1,0 +1,38 @@
+@HostAddress = http://localhost:5054
+
+### 1. Testar o Middleware de Segurança (Deve dar Erro 401 - Acesso Negado)
+GET {{HostAddress}}/api/users
+Accept: application/json
+
+
+### 2. Criar um novo usuário (POST)
+POST {{HostAddress}}/api/users
+Content-Type: application/json
+Authorization: Bearer valid-token
+
+{
+  "name": "Luiz Henrique",
+  "email": "luiz@exemplo.com"
+}
+
+
+### 3. Listar todos os usuários (GET)
+GET {{HostAddress}}/api/users
+Accept: application/json
+Authorization: Bearer valid-token
+
+
+### 4. Atualizar o usuário (PUT)
+PUT {{HostAddress}}/api/users/1
+Content-Type: application/json
+Authorization: Bearer valid-token
+
+{
+  "name": "Luiz Henrique Atualizado",
+  "email": "luiz.novo@exemplo.com"
+}
+
+
+### 5. Deletar o usuário (DELETE)
+DELETE {{HostAddress}}/api/users/1
+Authorization: Bearer valid-token
